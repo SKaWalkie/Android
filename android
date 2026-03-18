@@ -1,0 +1,154 @@
+
+MOBILE APP DEVELOPMENT – ANDROID STUDIO FORMAT (XML + JAVA)
+
+================ SLIP 1 =================
+
+MainActivity.java
+----------------
+package com.example.app;
+
+import android.os.Bundle;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    protected void onCreate(Bundle b){
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+        Toast.makeText(this,"onCreate",0).show();
+    }
+
+    protected void onStart(){super.onStart();Toast.makeText(this,"onStart",0).show();}
+    protected void onResume(){super.onResume();Toast.makeText(this,"onResume",0).show();}
+    protected void onPause(){super.onPause();Toast.makeText(this,"onPause",0).show();}
+    protected void onStop(){super.onStop();Toast.makeText(this,"onStop",0).show();}
+    protected void onDestroy(){super.onDestroy();Toast.makeText(this,"onDestroy",0).show();}
+}
+
+activity_main.xml
+----------------
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:orientation="vertical"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"/>
+
+================ SLIP 3 =================
+
+MainActivity.java
+----------------
+CheckBox cb1,cb2;
+TextView tv;
+
+if(cb1.isChecked()) tv.setText("Reading");
+if(cb2.isChecked()) tv.setText("Music");
+
+activity_main.xml
+----------------
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:orientation="vertical">
+
+<CheckBox android:id="@+id/cb1" android:text="Reading"/>
+<CheckBox android:id="@+id/cb2" android:text="Music"/>
+<TextView android:id="@+id/tv"/>
+
+</LinearLayout>
+
+================ SLIP 7 =================
+
+strings.xml
+-----------
+<string-array name="courses">
+    <item>BCA</item>
+    <item>BSc</item>
+</string-array>
+
+MainActivity.java
+----------------
+Spinner sp;
+ArrayAdapter a = ArrayAdapter.createFromResource(this,R.array.courses,android.R.layout.simple_spinner_item);
+sp.setAdapter(a);
+
+activity_main.xml
+----------------
+<Spinner android:id="@+id/sp"
+ xmlns:android="http://schemas.android.com/apk/res/android"/>
+
+================ SLIP 10 =================
+
+MainActivity.java
+----------------
+new AlertDialog.Builder(this)
+.setTitle("Warning")
+.setMessage("Battery low")
+.show();
+
+activity_main.xml
+----------------
+<Button android:text="Show Dialog"
+ xmlns:android="http://schemas.android.com/apk/res/android"/>
+
+================ SLIP 15 =================
+
+MainActivity.java
+----------------
+SQLiteDatabase db = openOrCreateDatabase("db",MODE_PRIVATE,null);
+db.execSQL("CREATE TABLE IF NOT EXISTS user(name TEXT,pass TEXT)");
+db.execSQL("INSERT INTO user VALUES('admin','123')");
+
+Cursor c=db.rawQuery("SELECT * FROM user WHERE name=? AND pass=?",new String[]{u,p});
+if(c.moveToFirst()){
+ new AlertDialog.Builder(this).setMessage("Login Successful").show();
+}
+
+activity_main.xml
+----------------
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:orientation="vertical">
+
+<EditText android:id="@+id/et1"/>
+<EditText android:id="@+id/et2"/>
+<Button android:text="Login"/>
+
+</LinearLayout>
+
+================ SLIP 21 =================
+
+MainActivity.java
+----------------
+int n=Integer.parseInt(et.getText().toString());
+
+if(rb1.isChecked()) tv.setText(n%2==0?"Even":"Odd");
+else if(rb2.isChecked()) tv.setText(n>=0?"Positive":"Negative");
+
+activity_main.xml
+----------------
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:orientation="vertical">
+
+<EditText android:id="@+id/et"/>
+<RadioButton android:id="@+id/rb1" android:text="Odd/Even"/>
+<RadioButton android:id="@+id/rb2" android:text="Positive/Negative"/>
+<TextView android:id="@+id/tv"/>
+
+</LinearLayout>
+
+================ SLIP 25 =================
+
+MainActivity.java
+----------------
+String s=et.getText().toString();
+String rev=new StringBuilder(s).reverse().toString();
+tv.setText(s.equals(rev)?"Palindrome":"Not");
+
+activity_main.xml
+----------------
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:orientation="vertical">
+
+<EditText android:id="@+id/et"/>
+<TextView android:id="@+id/tv"/>
+
+</LinearLayout>
+
+END
