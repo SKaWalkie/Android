@@ -111,4 +111,45 @@ public class MainActivity extends AppCompatActivity {
 }
 
 SLIP-2
+activity_main.xml
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
 
+    <TableRow>
+        <TextView android:text="Username"/>
+        <EditText android:hint="Enter Username"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView android:text="Password"/>
+        <EditText
+            android:hint="Enter Password"
+            android:inputType="textPassword"/>
+    </TableRow>
+
+    <TableRow>
+        <CheckBox android:text="Remember Password"/>
+    </TableRow>
+
+    <TableRow>
+        <Button android:text="Login"/>
+    </TableRow>
+
+</TableLayout>
+
+MainActivity.java
+package com.example.myapplication;
+
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+}
