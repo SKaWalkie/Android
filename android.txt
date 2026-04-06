@@ -984,3 +984,117 @@ public class MainActivity extends AppCompatActivity {
                 .putExtra(ContactsContract.Intents.Insert.PHONE, "(650)253-0000"));
     }
 }
+
+SLIP-12
+
+Q1. xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="50dp">
+
+    <LinearLayout android:id="@+id/cbGroup" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reading" />
+        <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Gaming" />
+        <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Coding" />
+    </LinearLayout>
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Show Hobbies" android:onClick="show"/>
+
+    <TextView android:id="@+id/result" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:textSize="18sp" android:layout_marginTop="20dp"/>
+
+</LinearLayout>
+
+java
+package com.example.myapplication;
+
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override protected void onCreate(Bundle b) { super.onCreate(b); setContentView(R.layout.activity_main); }
+
+    // Linked directly to the button in XML
+    public void show(View v) {
+        String selected = "Selected Hobbies:\n";
+        ViewGroup group = findViewById(R.id.cbGroup);
+
+        // Loop through the checkbox group
+        for (int i = 0; i < group.getChildCount(); i++) {
+            CheckBox cb = (CheckBox) group.getChildAt(i);
+            if (cb.isChecked()) selected += "- " + cb.getText() + "\n";
+        }
+
+        // Display the result
+        ((TextView) findViewById(R.id.result)).setText(selected);
+    }
+}
+
+Q2. xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="20dp" android:gravity="center">
+
+    <EditText android:id="@+id/n1" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:hint="First Number" android:inputType="numberDecimal"/>
+
+    <EditText android:id="@+id/n2" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:hint="Second Number" android:inputType="numberDecimal" android:layout_marginTop="10dp"/>
+
+    <TextView android:id="@+id/res" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Result" android:textSize="25sp" android:layout_marginTop="30dp" android:textStyle="bold"/>
+
+</LinearLayout>
+
+java
+package com.example.myapplication;
+
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    EditText e1, e2; TextView tv;
+
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+        e1 = findViewById(R.id.n1); e2 = findViewById(R.id.n2); tv = findViewById(R.id.res);
+    }
+
+    @Override public boolean onCreateOptionsMenu(Menu m) {
+        m.add(0, 1, 0, "Add");
+        m.add(0, 2, 0, "Sub");
+        m.add(0, 3, 0, "Mul");
+        m.add(0, 4, 0, "Div");
+        return true;
+    }
+
+    @Override public boolean onOptionsItemSelected(MenuItem item) {
+        double a = Double.parseDouble(e1.getText().toString());
+        double b = Double.parseDouble(e2.getText().toString());
+        double r = 0;
+
+        switch (item.getItemId()) {
+            case 1: r = a + b; break;
+            case 2: r = a - b; break;
+            case 3: r = a * b; break;
+            case 4: r = a / b; break;
+        }
+        tv.setText("Result: " + r);
+        return true;
+    }
+}
+
+SLIP-13
+
+Q1. xml
+
