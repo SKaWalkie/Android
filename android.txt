@@ -1097,4 +1097,37 @@ public class MainActivity extends AppCompatActivity {
 SLIP-13
 
 Q1. xml
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="20dp">
+
+        <Button android:layout_width="match_parent" android:layout_height="100dp" android:text="Button 1" />
+        <Button android:layout_width="match_parent" android:layout_height="100dp" android:text="Button 2" />
+        <Button android:layout_width="match_parent" android:layout_height="100dp" android:text="Button 3" />
+        <Button android:layout_width="match_parent" android:layout_height="100dp" android:text="Button 4" />
+        <Button android:layout_width="match_parent" android:layout_height="100dp" android:text="Button 5" />
+        <Button android:layout_width="match_parent" android:layout_height="100dp" android:text="Button 6" />
+        <Button android:layout_width="match_parent" android:layout_height="100dp" android:text="Button 7" />
+        <Button android:layout_width="match_parent" android:layout_height="100dp" android:text="Button 8" />
+        <Button android:layout_width="match_parent" android:layout_height="100dp" android:text="Button 9" />
+
+        <Button android:layout_width="match_parent" android:layout_height="100dp"
+            android:text="Button 10" android:backgroundTint="#FF9800" />
+
+    </LinearLayout>
+</ScrollView>
+
+java
+package com.example.myapplication;
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+    }
+}
