@@ -3,7 +3,7 @@ AHH HERE WE GO AGAIN, THIS SHIT IS TRASH! I SPENT HOURS MAKING THIS. FUCK IT. [S
 SLIP 1
 
 Q1 MainActivity.java
-package com.example.lifecycleapp; // Replace with your actual package name
+package com.example.myapplication; // Replace with your actual package name
 
 import android.os.Bundle;
 import android.util.Log;
