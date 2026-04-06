@@ -1,155 +1,89 @@
 AHH HERE WE GO AGAIN, THIS SHIT IS TRASH! I SPENT HOURS MAKING THIS. FUCK IT. [STILL WORK IN PROGRESS SO COME LATER UNTIL THEN FUCK OFF]
 
 SLIP 1
-Q1 - activity_main.xml
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
-
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Insert Contact"/>
-</LinearLayout>
-
-MainActivity.java
-package com.example.myapplication;
+Q1 
+package com.example.lifecycleapp; // Replace with your actual package name
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private void show(String msg){
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-        Log.d("LIFE", msg);
-    }
+    private static final String TAG = "LifecycleDemo";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        show("onCreate");
+        Log.d(TAG, "1. onCreate Called - App Created");
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        show("onStart");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        show("onResume");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        show("onPause");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        show("onStop");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        show("onDestroy");
-    }
+    @Override protected void onStart() { super.onStart(); Log.d(TAG, "2. onStart Called - App Visible"); }
+    @Override protected void onResume() { super.onResume(); Log.d(TAG, "3. onResume Called - App Interactive"); }
+    @Override protected void onPause() { super.onPause(); Log.d(TAG, "4. onPause Called - App Partially Hidden"); }
+    @Override protected void onStop() { super.onStop(); Log.d(TAG, "5. onStop Called - App Hidden"); }
+    @Override protected void onDestroy() { super.onDestroy(); Log.d(TAG, "6. onDestroy Called - App Destroyed"); }
+    @Override protected void onRestart() { super.onRestart(); Log.d(TAG, "7. onRestart Called - App Restarting"); }
 }
 
 Q2 - activity_main.xml
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Insert Contact"/>
-</LinearLayout>
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_centerInParent="true" android:text="Insert Contact" 
+        android:onClick="insertContact" /> </RelativeLayout>
 
 MainActivity.java
-package com.example.myapplication;
+package com.example.insertcontactapp; // Use your package name
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.widget.Button;
+import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
-    Button btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
 
-        btn = findViewById(R.id.btn);
-
-        btn.setOnClickListener(v -> {
-            Intent i = new Intent(Intent.ACTION_INSERT);
-            i.setType(ContactsContract.RawContacts.CONTENT_TYPE);
-            startActivity(i);
-        });
+    // This single method handles the click and launches the contact app
+    public void insertContact(View v) {
+        startActivity(new Intent(Intent.ACTION_INSERT)
+                .setType(ContactsContract.RawContacts.CONTENT_TYPE)
+                .putExtra(ContactsContract.Intents.Insert.PHONE, "(650)253-0000"));
     }
 }
 
 SLIP-2
 activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp">
+    android:background="#000000"
+    android:padding="50dp"
+    android:stretchColumns="1"> <TableRow android:layout_marginTop="16dp">
+    <TextView android:text="User Name:" android:textColor="#FFFFFF" android:paddingEnd="10dp"/>
+    <EditText android:background="#FFFFFF" android:minHeight="40dp"/>
+</TableRow>
 
-    <TableRow>
-        <TextView android:text="Username"/>
-        <EditText android:hint="Enter Username"/>
+    <TableRow android:layout_marginTop="16dp">
+        <TextView android:text="Password:" android:textColor="#FFFFFF" android:paddingEnd="10dp"/>
+        <EditText android:background="#FFFFFF" android:inputType="textPassword" android:minHeight="40dp"/>
     </TableRow>
 
-    <TableRow>
-        <TextView android:text="Password"/>
-        <EditText
-            android:hint="Enter Password"
-            android:inputType="textPassword"/>
+    <TableRow android:layout_marginTop="8dp">
+        <View /> <CheckBox android:text="Remember Password" android:textColor="#FFFFFF"/>
     </TableRow>
 
-    <TableRow>
-        <CheckBox android:text="Remember Password"/>
-    </TableRow>
-
-    <TableRow>
-        <Button android:text="Login"/>
+    <TableRow android:layout_marginTop="16dp">
+        <Button android:text="Log In" android:layout_width="wrap_content"/>
     </TableRow>
 
 </TableLayout>
-
-MainActivity.java
-package com.example.myapplication;
-
-import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-
-public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
-}
