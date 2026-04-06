@@ -467,3 +467,64 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=India")));
     }
 }
+
+Q2. xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="50dp" android:gravity="center_horizontal">
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Update Sid 1 to Ram" android:onClick="updateName"/>
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Display All Students" android:onClick="displayAll"/>
+
+    <TextView android:id="@+id/tv" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:textSize="18sp" android:layout_marginTop="20dp"/>
+</LinearLayout>
+
+java
+package com.example.myapplication;
+
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    SQLiteDatabase db;
+    TextView tv;
+
+    @Override
+    protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+        tv = findViewById(R.id.tv);
+
+        // Create Database and Table
+        db = openOrCreateDatabase("StudDB", MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS Student(Sid INTEGER, Student_name TEXT, Phone_no TEXT)");
+
+        // Inserting a test record if table is empty
+        db.execSQL("INSERT INTO Student VALUES(1, 'OldName', '9876543210')");
+    }
+
+    // i) Update the student name to Ram where Sid = 1
+    public void updateName(View v) {
+        db.execSQL("UPDATE Student SET Student_name = 'Ram' WHERE Sid = 1");
+        tv.setText("Record Updated Successfully!");
+    }
+
+    // ii) Display all student details
+    public void displayAll(View v) {
+        Cursor c = db.rawQuery("SELECT * FROM Student", null);
+        String data = "Student List:\n";
+        while(c.moveToNext()) {
+            data += "ID: " + c.getInt(0) + " | Name: " + c.getString(1) + " | Ph: " + c.getString(2) + "\n";
+        }
+        tv.setText(data);
+        c.close();
+    }
+}
