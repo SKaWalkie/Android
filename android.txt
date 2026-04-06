@@ -599,3 +599,119 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Selected: " + item, Toast.LENGTH_SHORT).show();
     }
 }
+
+SLIP-8
+Q1. activity_main.xml
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list" android:layout_width="match_parent" android:layout_height="match_parent" />
+
+contact_item.xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="horizontal" android:padding="10dp" android:gravity="center_vertical">
+
+    <ImageView android:id="@+id/img" android:layout_width="60dp" android:layout_height="60dp"
+        android:src="@android:drawable/ic_menu_report_image" />
+
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:orientation="vertical" android:layout_marginStart="15dp">
+        <TextView android:id="@+id/nm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textStyle="bold" android:textSize="18sp" />
+        <TextView android:id="@+id/ph" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:id="@+id/em" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#555"/>
+    </LinearLayout>
+</LinearLayout>
+
+java
+package com.example.myapplication;
+
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.*;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    // Sample Data
+    String[] names = {"John Doe", "Jane Smith"},
+            nums = {"12345", "67890"},
+            emails = {"john@a.com", "jane@b.com"};
+
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+
+        ListView lv = findViewById(R.id.list);
+
+        // The Adapter connects our arrays to the custom XML
+        lv.setAdapter(new BaseAdapter() {
+            @Override public int getCount() { return names.length; }
+            @Override public Object getItem(int i) { return null; }
+            @Override public long getItemId(int i) { return i; }
+
+            @Override public View getView(int i, View v, ViewGroup p) {
+                if (v == null) v = getLayoutInflater().inflate(R.layout.contact_item, null);
+
+                ((TextView) v.findViewById(R.id.nm)).setText(names[i]);
+                ((TextView) v.findViewById(R.id.ph)).setText(nums[i]);
+                ((TextView) v.findViewById(R.id.em)).setText(emails[i]);
+
+                return v;
+            }
+        });
+    }
+}
+
+Q2. xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="20dp" android:gravity="center">
+
+    <EditText android:id="@+id/num" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:hint="Enter Number" android:inputType="number"/>
+
+    <TextView android:id="@+id/res" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:textSize="22sp" android:layout_marginTop="30dp"
+        android:text="Result will show here"/>
+
+</LinearLayout>
+
+java
+package com.example.myapplication;
+
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    EditText et; TextView tv;
+
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+        et = findViewById(R.id.num);
+        tv = findViewById(R.id.res);
+    }
+
+    // Creating the Options Menu without an XML file
+    @Override public boolean onCreateOptionsMenu(Menu m) {
+        m.add(0, 1, 0, "Reverse");
+        m.add(0, 2, 0, "Cube");
+        return true;
+    }
+
+    @Override public boolean onOptionsItemSelected(MenuItem item) {
+        int n = Integer.parseInt(et.getText().toString());
+
+        if (item.getItemId() == 1) { // Reverse Logic
+            int rev = 0;
+            while(n != 0) { rev = rev * 10 + n % 10; n /= 10; }
+            tv.setText("Reverse: " + rev);
+        } else { // Cube Logic
+            tv.setText("Cube: " + (n * n * n));
+        }
+        return true;
+    }
+}
