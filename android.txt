@@ -1131,3 +1131,35 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 }
+
+Q2. xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/box" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="50dp">
+
+    <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="First Name" />
+    <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Middle Name" />
+    <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Last Name" />
+    <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Date of Birth" />
+    <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Address" />
+    <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email ID" />
+
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Submit" android:onClick="send"/>
+
+</LinearLayout>
+
+java
+package com.example.myapplication;
+import android.os.Bundle;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class Second extends AppCompatActivity {
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        TextView tv = new TextView(this);
+        tv.setTextSize(20f);
+        tv.setPadding(40, 40, 40, 40);
+        tv.setText(getIntent().getStringExtra("DATA"));
+        setContentView(tv);
+    }
+}
