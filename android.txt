@@ -146,3 +146,87 @@ public class Second extends AppCompatActivity {
 }
 
 SLIP-3
+
+Q1. activity.xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="50dp">
+
+    <LinearLayout android:id="@+id/cbGroup" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reading" />
+        <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Gaming" />
+        <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Coding" />
+    </LinearLayout>
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Show Hobbies" android:onClick="show"/>
+
+    <TextView android:id="@+id/result" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:textSize="18sp" android:layout_marginTop="20dp"/>
+
+</LinearLayout>
+
+MainActivity.java
+package com.example.myapplication;
+
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override protected void onCreate(Bundle b) { super.onCreate(b); setContentView(R.layout.activity_main); }
+
+    // Linked directly to the button in XML
+    public void show(View v) {
+        String selected = "Selected Hobbies:\n";
+        ViewGroup group = findViewById(R.id.cbGroup);
+
+        // Loop through the checkbox group
+        for (int i = 0; i < group.getChildCount(); i++) {
+            CheckBox cb = (CheckBox) group.getChildAt(i);
+            if (cb.isChecked()) selected += "- " + cb.getText() + "\n";
+        }
+
+        // Display the result
+        ((TextView) findViewById(R.id.result)).setText(selected);
+    }
+}
+
+Q2. activity.xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:padding="50dp">
+
+    <AutoCompleteTextView
+        android:id="@+id/autoComplete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Type a color (e.g., Red, Blue...)"
+        android:completionThreshold="1" /> </LinearLayout>
+
+MainActivity.java
+package com.example.myapplication;
+
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+
+        // 1. Create a simple array of colors
+        String[] colors = {"Red", "Blue", "Black", "Brown", "Green", "Grey", "Yellow", "White"};
+
+        // 2. Connect the array to the AutoCompleteTextView using a default Android list layout
+        ((AutoCompleteTextView) findViewById(R.id.autoComplete)).setAdapter(
+                new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, colors));
+    }
+}
+
+SLIP-4
