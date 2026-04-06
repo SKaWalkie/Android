@@ -528,3 +528,74 @@ public class MainActivity extends AppCompatActivity {
         c.close();
     }
 }
+
+SLIP-7
+Q1. xml
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/main"
+    android:background="#000000">
+
+    <ImageView
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:src="@android:drawable/btn_star_big_on"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="This is my lovely dog, Oukii"
+        android:textColor="#FFFFFF" android:padding="10dp" />
+
+    <Button
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Print Picture"
+        android:layout_marginTop="40dp" android:layout_marginStart="20dp" />
+
+</FrameLayout>
+
+Q2. xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="20dp" android:gravity="center">
+
+    <Spinner android:id="@+id/sp"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:entries="@array/courses" />
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Show Selected" android:onClick="show" android:layout_marginTop="20dp"/>
+
+</LinearLayout>
+
+strings
+<resources>
+    <string name="app_name">CourseApp</string>
+    <string-array name="courses">
+        <item>Android</item>
+        <item>Java</item>
+        <item>Python</item>
+        <item>PHP</item>
+    </string-array>
+</resources>
+
+java
+package com.example.myapplication;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Spinner;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void show(View v) {
+        String item = ((Spinner) findViewById(R.id.sp)).getSelectedItem().toString();
+        Toast.makeText(this, "Selected: " + item, Toast.LENGTH_SHORT).show();
+    }
+}
