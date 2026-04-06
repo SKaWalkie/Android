@@ -230,3 +230,139 @@ public class MainActivity extends AppCompatActivity {
 }
 
 SLIP-4
+
+Q1. activity.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:gravity="center" android:padding="20dp">
+
+    <ImageView android:id="@+id/bulb"
+        android:layout_width="150dp" android:layout_height="150dp"
+        android:layout_marginBottom="30dp"
+        android:src="@android:drawable/btn_star_big_off" />
+
+    <ToggleButton android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:textOff="TURN ON" android:textOn="TURN OFF"
+        android:onClick="toggleBulb" />
+
+</LinearLayout>
+
+MainActivity.java
+package com.example.myapplication;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ToggleButton;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+    }
+
+    // Triggers instantly when the ToggleButton is clicked
+    public void toggleBulb(View v) {
+        // If checked, set to 'ON' icon. If unchecked, set to 'OFF' icon.
+        ((ImageView) findViewById(R.id.bulb)).setImageResource( ((ToggleButton) v).isChecked()
+                ? android.R.drawable.btn_star_big_on
+                : android.R.drawable.btn_star_big_off );
+    }
+}
+
+Q2. xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="50dp">
+
+    <EditText android:id="@+id/etName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Name"/>
+    <EditText android:id="@+id/etAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Address"/>
+    <EditText android:id="@+id/etPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Phone No"/>
+
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Insert Customer" android:onClick="insert"/>
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Show All" android:onClick="display"/>
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp">
+        <TextView android:id="@+id/tvResult" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="16sp"/>
+    </ScrollView>
+
+</LinearLayout>
+
+java
+package com.example.myapplication;
+
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    SQLiteDatabase db;
+
+    @Override
+    protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+
+        // 1. Create or open the database & table in one line!
+        db = openOrCreateDatabase("CustomerDB", MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS Customer(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, address TEXT, phone TEXT)");
+    }
+
+    // 2. Insert new customer details
+    public void insert(View v) {
+        db.execSQL("INSERT INTO Customer(name, address, phone) VALUES('" + getTxt(R.id.etName) + "','" + getTxt(R.id.etAddress) + "','" + getTxt(R.id.etPhone) + "')");
+    }
+
+    // 3. Display all customer details
+    public void display(View v) {
+        Cursor c = db.rawQuery("SELECT * FROM Customer", null);
+        String result = "";
+
+        // Loop through the database results row by row
+        while (c.moveToNext()) {
+            result += "ID: " + c.getString(0) + "\nName: " + c.getString(1) +
+                    "\nAddress: " + c.getString(2) + "\nPhone: " + c.getString(3) + "\n\n";
+        }
+        ((TextView) findViewById(R.id.tvResult)).setText(result);
+    }
+
+    // Quick helper method to keep the insert code tiny
+    private String getTxt(int id) {
+        return ((EditText) findViewById(id)).getText().toString();
+    }
+}
+
+SLIP-5
+Q1. xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/main"
+    android:background="#000000" android:padding="50dp">
+
+    <TextView android:id="@+id/lbl" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Comments" android:textColor="#FFFFFF" />
+
+    <EditText android:id="@+id/box" android:layout_width="match_parent" android:layout_height="150dp"
+        android:layout_below="@id/lbl" android:layout_marginTop="5dp"
+        android:background="#FFFFFF" android:gravity="top|start" android:padding="5dp"/>
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_below="@id/box" android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" android:text="Cancel" />
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_below="@id/box" android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp" android:text="Save" />
+
+</RelativeLayout>
