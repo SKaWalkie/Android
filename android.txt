@@ -873,6 +873,7 @@ welcomejava
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.view.Gravity;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -881,10 +882,12 @@ public class Welcome extends AppCompatActivity {
         super.onCreate(b);
         TextView tv = new TextView(this);
         tv.setTextSize(24);
+        tv.setGravity(Gravity.CENTER);
         tv.setText("Welcome " + getIntent().getStringExtra("user"));
         setContentView(tv);
     }
 }
+
 
 SLIP-10
 
