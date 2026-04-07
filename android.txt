@@ -197,35 +197,36 @@ public class MainActivity extends AppCompatActivity {
 
 Q2. activity.xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent" android:padding="50dp">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:padding="20dp" android:gravity="center">
 
-    <AutoCompleteTextView
-        android:id="@+id/autoComplete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Type a color (e.g., Red, Blue...)"
-        android:completionThreshold="1" /> </LinearLayout>
+    <AutoCompleteTextView android:id="@+id/actv"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:hint="Type a color (e.g., Red, Blue)" 
+        android:completionThreshold="1" />
+
+</LinearLayout>
 
 MainActivity.java
-package com.example.myapplication;
-
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+    // 1. Create the data source
+    String[] colors = {"Red", "Blue", "Black", "Brown", "Green", "Gray", "Yellow", "Pink", "Purple"};
 
     @Override protected void onCreate(Bundle b) {
         super.onCreate(b);
         setContentView(R.layout.activity_main);
 
-        // 1. Create a simple array of colors
-        String[] colors = {"Red", "Blue", "Black", "Brown", "Green", "Grey", "Yellow", "White"};
+        // 2. Create the adapter using a simple built-in layout
+        ArrayAdapter<String> ad = new ArrayAdapter<>(this, 
+            android.R.layout.simple_list_item_1, colors);
 
-        // 2. Connect the array to the AutoCompleteTextView using a default Android list layout
-        ((AutoCompleteTextView) findViewById(R.id.autoComplete)).setAdapter(
-                new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, colors));
+        // 3. Find the view and set the adapter in one line
+        ((AutoCompleteTextView) findViewById(R.id.actv)).setAdapter(ad);
     }
 }
 
@@ -717,6 +718,7 @@ public class MainActivity extends AppCompatActivity {
 }
 
 SLIP-9
+
 Q1. xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
@@ -1603,3 +1605,157 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+
+SLIP-18
+
+Q1. activity.xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="50dp">
+
+    <LinearLayout android:id="@+id/cbGroup" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reading" />
+        <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Gaming" />
+        <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Coding" />
+    </LinearLayout>
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Show Hobbies" android:onClick="show"/>
+
+    <TextView android:id="@+id/result" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:textSize="18sp" android:layout_marginTop="20dp"/>
+
+</LinearLayout>
+
+MainActivity.java
+package com.example.myapplication;
+
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override protected void onCreate(Bundle b) { super.onCreate(b); setContentView(R.layout.activity_main); }
+
+    // Linked directly to the button in XML
+    public void show(View v) {
+        String selected = "Selected Hobbies:\n";
+        ViewGroup group = findViewById(R.id.cbGroup);
+
+        // Loop through the checkbox group
+        for (int i = 0; i < group.getChildCount(); i++) {
+            CheckBox cb = (CheckBox) group.getChildAt(i);
+            if (cb.isChecked()) selected += "- " + cb.getText() + "\n";
+        }
+
+        // Display the result
+        ((TextView) findViewById(R.id.result)).setText(selected);
+    }
+}
+
+Q2. strings.xml
+<resources>
+    <string name="app_name">SpinnerExample</string>
+    
+    <string-array name="banks">
+        <item>BOI</item>
+        <item>SBI</item>
+        <item>HDFC</item>
+        <item>PNB</item>
+        <item>OBC</item>
+    </string-array>
+</resources>
+
+xml
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <Spinner android:id="@+id/sp" 
+        android:layout_width="wrap_content" android:layout_height="wrap_content" 
+        android:layout_centerInParent="true" 
+        android:entries="@array/banks" />
+
+</RelativeLayout>
+
+java
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Spinner;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+
+        Spinner sp = findViewById(R.id.sp);
+        
+        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override public void onItemSelected(AdapterView<?> p, View v, int i, long id) {
+                // p.getItemAtPosition(i) automatically gets the clicked bank name
+                Toast.makeText(MainActivity.this, "Selected: " + p.getItemAtPosition(i), Toast.LENGTH_SHORT).show();
+            }
+            @Override public void onNothingSelected(AdapterView<?> p) {}
+        });
+    }
+}
+
+SLIP-19
+
+Q1. xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="20dp" android:gravity="center">
+
+    <EditText android:id="@+id/n1" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Number 1" android:inputType="number"/>
+    <EditText android:id="@+id/n2" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Number 2" android:inputType="number"/>
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Check" android:onClick="check"/>
+
+    <TextView android:id="@+id/res" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" android:layout_marginTop="20dp"/>
+
+</LinearLayout>
+
+java
+package com.example.myapplication;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    EditText e1, e2; TextView tv;
+
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+        e1 = findViewById(R.id.n1); e2 = findViewById(R.id.n2); tv = findViewById(R.id.res);
+    }
+
+    public void check(View v) {
+        int a = Integer.parseInt(e1.getText().toString());
+        int b = Integer.parseInt(e2.getText().toString());
+
+        if (a > 10 && b > 10) {
+            // Rejection Logic
+            Toast.makeText(this, "Both > 10! Enter new numbers.", Toast.LENGTH_LONG).show();
+            e1.setText(""); e2.setText(""); // Clear inputs
+            tv.setText("");
+        } else {
+            // Acceptance Logic
+            tv.setText("Numbers: " + a + " and " + b);
+        }
+    }
+}
+
+Q2. 
+
