@@ -869,6 +869,8 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
+NOTE: DON'T FORGET TO ADD " <activity android:name=".Welcome" /> " IN YOUR " AndroidManifest.xml " before saying code not running! Fuck You Again! 
+
 welcomejava
 package com.example.myapplication;
 
