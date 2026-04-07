@@ -5,7 +5,7 @@ SLIP 1
 Create a simple application which shows the life cycle of an activity.
 
 Q1. MainActivity.java
-package com.example.myapplication; // Replace with your actual package name
+package com.example.myapplication;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -41,7 +41,7 @@ Q2 - activity_main.xml
         android:onClick="insertContact" /> </RelativeLayout>
 
 MainActivity.java
-package com.example.insertcontactapp; // Use your package name
+package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
