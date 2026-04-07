@@ -1757,5 +1757,134 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-Q2. 
+Q2. activity.xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:padding="20dp" android:gravity="center">
 
+    <AutoCompleteTextView android:id="@+id/actv"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:hint="Type a color (e.g., Red, Blue)" 
+        android:completionThreshold="1" />
+
+</LinearLayout>
+
+MainActivity.java
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    // 1. Create the data source
+    String[] colors = {"Red", "Blue", "Black", "Brown", "Green", "Gray", "Yellow", "Pink", "Purple"};
+
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+
+        // 2. Create the adapter using a simple built-in layout
+        ArrayAdapter<String> ad = new ArrayAdapter<>(this, 
+            android.R.layout.simple_list_item_1, colors);
+
+        // 3. Find the view and set the adapter in one line
+        ((AutoCompleteTextView) findViewById(R.id.actv)).setAdapter(ad);
+    }
+}
+
+SLIP-20
+Q1. xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:gravity="center">
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Check Battery" android:onClick="showAlert"/>
+
+</LinearLayout>
+
+java
+package com.example.myapplication;
+
+import android.app.AlertDialog;
+import android.os.Bundle;
+import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void showAlert(View v) {
+        new AlertDialog.Builder(this)
+                .setTitle("Warning")
+                .setMessage("Battery is low")
+                .setPositiveButton("OK", null) // 'null' simply closes the dialog
+                .show();
+    }
+}
+
+Q2. xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="50dp">
+
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Delete TCS Records" android:onClick="delTCS" />
+
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Display All Companies" android:onClick="displayAll" android:layout_marginTop="10dp"/>
+
+    <TextView android:id="@+id/tv" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:textSize="18sp" android:layout_marginTop="20dp"/>
+
+</LinearLayout>
+
+java
+package com.example.myapplication;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    SQLiteDatabase db;
+    TextView tv;
+
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+        tv = findViewById(R.id.tv);
+
+        // 1. Create Database and Table instantly
+        db = openOrCreateDatabase("CompanyDB", MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS Company(id INTEGER, name TEXT, address TEXT, phone_no TEXT)");
+
+        // Insert dummy records so you have something to delete and display
+        db.execSQL("INSERT INTO Company VALUES(1, 'TCS', 'Pune', '12345')");
+        db.execSQL("INSERT INTO Company VALUES(2, 'Infosys', 'Bangalore', '67890')");
+    }
+
+    // i) Delete records where company name = TCS
+    public void delTCS(View v) {
+        db.execSQL("DELETE FROM Company WHERE name = 'TCS'");
+        tv.setText("TCS records deleted successfully!");
+    }
+
+    // ii) Display all company details
+    public void displayAll(View v) {
+        Cursor c = db.rawQuery("SELECT * FROM Company", null);
+        String data = "Company List:\n";
+
+        while(c.moveToNext()) {
+            data += "ID: " + c.getInt(0) + " | Name: " + c.getString(1) +
+                    " | Addr: " + c.getString(2) + " | Ph: " + c.getString(3) + "\n";
+        }
+        tv.setText(data);
+        c.close();
+    }
+}
