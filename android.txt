@@ -2,7 +2,7 @@ AHH HERE WE GO AGAIN, THIS SHIT IS TRASH! I SPENT HOURS MAKING THIS. FUCK IT. UP
 
 SLIP 1
 
-Create a simple application which shows the life cycle of an activity.
+//Create a simple application which shows the life cycle of an activity.
 
 Q1. MainActivity.java
 package com.example.myapplication;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     @Override protected void onRestart() { super.onRestart(); Log.d(TAG, "7. onRestart Called - App Restarting"); }
 }
 
-Create new contact for designing following layout.
+//Create new contact for designing following layout.
 
 Q2 - activity_main.xml
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-2
 
-Create an Android application to design the following screen using Table Layout.
+//Create an Android application to design the following screen using Table Layout.
 
 Q1. activity_main.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -96,7 +96,7 @@ Q1. activity_main.xml
 
 </TableLayout>
 
-Create a first activity to accept the following information of a teacher: First Name, Middle 
+//Create a first activity to accept the following information of a teacher: First Name, Middle 
 Name, Last Name, Date of Birth, Address, Mobile Number, and Specialization Subject. Display 
 all the information on the second activity when the user clicks the Submit button. 
 
@@ -156,7 +156,7 @@ public class Second extends AppCompatActivity {
 
 SLIP-3
 
-Create an Android application to demonstrate the use of CheckBox to select multiple 
+//Create an Android application to demonstrate the use of CheckBox to select multiple 
 hobbies and display the selected hobbies. 
 
 Q1. activity.xml
@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-Create an Android application to demonstrate the use of AutoCompleteTextView for 
+//Create an Android application to demonstrate the use of AutoCompleteTextView for 
 displaying a list of different colors                
 
 Q2. activity.xml
@@ -247,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-4
 
-Construct an app that toggles a light bulb on and off when the user clicks on toggle button. 
+//Construct an app that toggles a light bulb on and off when the user clicks on toggle button. 
 
 Q1. activity.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -292,7 +292,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-Create an application for performing the following operation on the table Customer (id, 
+//Create an application for performing the following operation on the table Customer (id, 
 name, address, phone-no) using SQLite Database: [14 Marks] 
 i) Insert new customer details 
 ii) Display all customer details
@@ -367,7 +367,7 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-5
 
- Create an Android application to design the following screen using Relative Layout.
+ //Create an Android application to design the following screen using Relative Layout.
 
 Q1. xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -393,7 +393,7 @@ Q1. xml
 
 </RelativeLayout>
 
-Create a first activity to accept the following student information: First Name, Middle 
+//Create a first activity to accept the following student information: First Name, Middle 
 Name, Last Name, Date of Birth, Address, and Email ID. Display all the information on the 
 second activity when the user clicks the Submit button. 
 
@@ -459,7 +459,7 @@ public class Second extends AppCompatActivity {
 
 SLIP-6
 
-Create an Android application with two buttons as shown in the given image and apply 
+//Create an Android application with two buttons as shown in the given image and apply 
 implicit intents for different actions.
 
 Q1. xml
@@ -501,7 +501,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-Create an Android application to perform the following operations on the table Student 
+//Create an Android application to perform the following operations on the table Student 
 (Sid, Student_name, Phone_no):               [14 Marks]    
 i) Update the student name to Ram where Sid = 1 
 ii) Display all student details 
@@ -569,7 +569,7 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-7
 
-Create an Android application to design the following screen using Frame Layout. 
+//Create an Android application to design the following screen using Frame Layout. 
 
 Q1. xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -595,7 +595,7 @@ Q1. xml
 
 </FrameLayout>
 
-Create an Android application to select a course using Spinner and display the selected 
+//Create an Android application to select a course using Spinner and display the selected 
 course using a Toast message. (Use strings.xml file.)
 
 Q2. xml
@@ -646,7 +646,7 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-8
 
-Create a custom Contact layout to display multiple pieces of information including Photo, 
+//Create a custom Contact layout to display multiple pieces of information including Photo, 
 Name, Contact Number, and Email ID. 
 
 Q1. activity_main.xml
@@ -709,7 +709,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
- Create an Android application to accept a number and use an Options Menu to perform 
+//Create an Android application to accept a number and use an Options Menu to perform 
 the operations Reverse Number and Cube. Display the result on the screen.
 
 Q2. xml
@@ -769,7 +769,7 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-9
 
-Write an Android application to accept two numbers from the user and display them, but 
+//Write an Android application to accept two numbers from the user and display them, but 
 reject the input if both numbers are greater than 10 and ask the user to enter new numbers.
 
 Q1. xml
@@ -822,7 +822,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
- Create a simple Android application with a Login Screen. On successful login, open the 
+ //Create a simple Android application with a Login Screen. On successful login, open the 
 next Activity and display the message “Welcome Username”. (Without using a database).
 
 Q2. xml
@@ -888,7 +888,7 @@ public class Welcome extends AppCompatActivity {
 
 SLIP-10
 
- Create an Android application to display an Alert Dialog Box with the title "Warning" and 
+ //Create an Android application to display an Alert Dialog Box with the title "Warning" and 
 message "Battery is low".
 
 Q1. xml
@@ -924,7 +924,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-Create an Android application to display a list of cities using ListView. Display the selected 
+//Create an Android application to display a list of cities using ListView. Display the selected 
 city using a Toast message when a city is selected. 
 
 Q2. xml
@@ -967,7 +967,7 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-11
 
- Create an Android application to display your personal information such as Name, Roll 
+ //Create an Android application to display your personal information such as Name, Roll 
 Number, Class, and Email ID. Apply different text sizes, text colors, and font families to each 
 text view.
 
@@ -1020,7 +1020,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-Create new contact for designing following layout. 
+//Create new contact for designing following layout. 
 
 Q2. xml
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -1057,7 +1057,7 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-12
 
- Create an Android application to demonstrate the use of CheckBox to select multiple 
+ //Create an Android application to demonstrate the use of CheckBox to select multiple 
 hobbies and display the selected hobbies.    
 
 Q1. xml
@@ -1108,7 +1108,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
- Create an Android application to accept two numbers and perform Addition, Subtraction, 
+// Create an Android application to accept two numbers and perform Addition, Subtraction, 
 Multiplication, and Division using an Options Menu.    
 
 Q2. xml
@@ -1172,7 +1172,7 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-13
 
- Create the following Vertical Scroll View layout.
+ //Create the following Vertical Scroll View layout.
 
 Q1. xml
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -1210,7 +1210,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-Create a first activity to accept the following teacher information: First Name, Middle 
+//Create a first activity to accept the following teacher information: First Name, Middle 
 Name, Last Name, Date of Birth, Address, Mobile Number, and Specialization. Display all the 
 information on the second activity when the user clicks the Submit button. 
 
@@ -1248,7 +1248,7 @@ public class Second extends AppCompatActivity {
 
 SLIP-14
 
-Create an Android application to design the following screen using Frame Layout.
+//Create an Android application to design the following screen using Frame Layout.
 
 Q1. xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -1274,7 +1274,7 @@ Q1. xml
 
 </FrameLayout>
 
-Create an application to accept movie details such as Name, Release Year, and Collection 
+//Create an application to accept movie details such as Name, Release Year, and Collection 
 and display the information on the next activity. 
 
 Q2. XML
@@ -1333,7 +1333,7 @@ public class Second extends AppCompatActivity {
 
 SLIP-15
 
- Create a custom Contact layout to display multiple pieces of information including Photo, 
+ //Create a custom Contact layout to display multiple pieces of information including Photo, 
 Name, Contact Number, and Email ID. 
 
 Q1. activity_main.xml
@@ -1396,7 +1396,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-Create an Android application with a Login Screen. Verify the Username and Password 
+//Create an Android application with a Login Screen. Verify the Username and Password 
 using a SQLite database. On successful login, display the message “Login Successful” in an 
 Alert Dialog Box. 
 
@@ -1470,7 +1470,7 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-16
 
- Create the following Vertical Scroll View layout.
+// Create the following Vertical Scroll View layout.
 
 Q1. xml
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -1508,7 +1508,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
- Create the simple calculator shown below also perform appropriate operation.
+// Create the simple calculator shown below also perform appropriate operation.
 
 Q2. xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -1593,7 +1593,7 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-17
 
- Create an Android application to design the following screen using Table Layout.
+// Create an Android application to design the following screen using Table Layout.
 
 Q1. activity_main.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -1622,7 +1622,7 @@ Q1. activity_main.xml
 
 </TableLayout>
 
-Create the simple calculator shown below also perform appropriate operation. 
+//Create the simple calculator shown below also perform appropriate operation. 
 
 Q2. xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -1707,7 +1707,7 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-18
 
- Create an Android application with two buttons as shown in the given image and apply 
+// Create an Android application with two buttons as shown in the given image and apply 
 implicit intents for different actions. 
 
 Q1. activity.xml
@@ -1758,7 +1758,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-Display a list of bank names in a Spinner. When an item is selected, display the selected 
+//Display a list of bank names in a Spinner. When an item is selected, display the selected 
 value using a Toast message on the mobile screen. (Use strings.xml file.) 
 
 Q2. strings.xml
@@ -1812,7 +1812,7 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-19
 
- Write an application to accept two numbers from the user, and display them, but reject 
+// Write an application to accept two numbers from the user, and display them, but reject 
 input if both numbers are greater than 10 and asks for two new numbers.
 
 Q1. xml
@@ -1865,7 +1865,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
- Create an Android application to demonstrate the use of AutoCompleteTextView for 
+// Create an Android application to demonstrate the use of AutoCompleteTextView for 
 displaying a list of different colors   
 
 Q2. activity.xml
@@ -1905,7 +1905,7 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-20
 
- Create an Android application to display an Alert Dialog Box with the title "Warning" and 
+// Create an Android application to display an Alert Dialog Box with the title "Warning" and 
 message "Battery is low".         
 
 Q1. xml
@@ -1941,7 +1941,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-Create table Company (id, name, address, phone_no). Create application for performing the 
+//Create table Company (id, name, address, phone_no). Create application for performing the 
 following operation on the table. 
 i) Delete records where company name = TCS 
 ii) Display all company details    
@@ -2011,7 +2011,7 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-21
 
-Create an Android application to display your personal information such as Name, Roll 
+//Create an Android application to display your personal information such as Name, Roll 
 Number, Class, and Email ID. Apply different text sizes, text colors, and font families to each 
 text view. 
 
@@ -2064,7 +2064,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-Create an Android application to perform following numeric operation according to user 
+//Create an Android application to perform following numeric operation according to user 
 selection of radio button  
 
 Q2. xml
@@ -2132,7 +2132,7 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-22
 
-Create an Android application with two buttons as shown in the given image and apply 
+//Create an Android application with two buttons as shown in the given image and apply 
 implicit intents for different actions. 
 
 Q1. activity.xml
@@ -2183,7 +2183,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-Create an Android application to demonstrate a Context Menu on a button. On long
+//Create an Android application to demonstrate a Context Menu on a button. On long
 press, display options “Factorial” and “Armstrong Number” and perform the selected 
 operation. 
 
@@ -2255,7 +2255,7 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-23
 
- Create an Android application to design the following screen using Relative Layout. 
+// Create an Android application to design the following screen using Relative Layout. 
 
 Q1. xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -2347,7 +2347,7 @@ public class Second extends AppCompatActivity {
 
 SLIP-24
 
-Create a simple Application which shows life cycle of an activity.
+//Create a simple Application which shows life cycle of an activity.
 
 Q1. MainActivity.java
 package com.example.myapplication; // Replace with your actual package name
@@ -2375,7 +2375,7 @@ public class MainActivity extends AppCompatActivity {
     @Override protected void onRestart() { super.onRestart(); Log.d(TAG, "7. onRestart Called - App Restarting"); }
 }
 
-Create an Android application to perform following operation according to user selection 
+//Create an Android application to perform following operation according to user selection 
 of radio button. 
 
 Q2. xml
@@ -2474,7 +2474,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-Create an Android application to demonstrate a Context Menu on a button. On long
+//Create an Android application to demonstrate a Context Menu on a button. On long
 press, display options “Palindrome” and “Reverse Number” and perform the selected 
 operation.
 
