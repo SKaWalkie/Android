@@ -2,7 +2,9 @@ AHH HERE WE GO AGAIN, THIS SHIT IS TRASH! I SPENT HOURS MAKING THIS. FUCK IT. [S
 
 SLIP 1
 
-Q1 MainActivity.java
+Create a simple application which shows the life cycle of an activity.
+
+Q1. MainActivity.java
 package com.example.myapplication; // Replace with your actual package name
 
 import android.os.Bundle;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     @Override protected void onDestroy() { super.onDestroy(); Log.d(TAG, "6. onDestroy Called - App Destroyed"); }
     @Override protected void onRestart() { super.onRestart(); Log.d(TAG, "7. onRestart Called - App Restarting"); }
 }
+
+Create new contact for designing following layout.
 
 Q2 - activity_main.xml
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -63,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-2
 
+Create an Android application to design the following screen using Table Layout.
+
 Q1. activity_main.xml
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -90,6 +96,10 @@ Q1. activity_main.xml
     </TableRow>
 
 </TableLayout>
+
+Create a first activity to accept the following information of a teacher: First Name, Middle 
+Name, Last Name, Date of Birth, Address, Mobile Number, and Specialization Subject. Display 
+all the information on the second activity when the user clicks the Submit button. 
 
 Q2. activity.xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -147,6 +157,9 @@ public class Second extends AppCompatActivity {
 
 SLIP-3
 
+Create an Android application to demonstrate the use of CheckBox to select multiple 
+hobbies and display the selected hobbies. 
+
 Q1. activity.xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="50dp">
@@ -195,6 +208,9 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
+Create an Android application to demonstrate the use of AutoCompleteTextView for 
+displaying a list of different colors                
+
 Q2. activity.xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
@@ -231,6 +247,8 @@ public class MainActivity extends AppCompatActivity {
 }
 
 SLIP-4
+
+Construct an app that toggles a light bulb on and off when the user clicks on toggle button. 
 
 Q1. activity.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -274,6 +292,11 @@ public class MainActivity extends AppCompatActivity {
                 : android.R.drawable.btn_star_big_off );
     }
 }
+
+Create an application for performing the following operation on the table Customer (id, 
+name, address, phone-no) using SQLite Database: [14 Marks] 
+i) Insert new customer details 
+ii) Display all customer details
 
 Q2. xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -344,6 +367,9 @@ public class MainActivity extends AppCompatActivity {
 }
 
 SLIP-5
+
+ Create an Android application to design the following screen using Relative Layout.
+
 Q1. xml
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -367,6 +393,10 @@ Q1. xml
         android:layout_marginTop="10dp" android:text="Save" />
 
 </RelativeLayout>
+
+Create a first activity to accept the following student information: First Name, Middle 
+Name, Last Name, Date of Birth, Address, and Email ID. Display all the information on the 
+second activity when the user clicks the Submit button. 
 
 Q2. xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -430,6 +460,9 @@ public class Second extends AppCompatActivity {
 
 SLIP-6
 
+Create an Android application with two buttons as shown in the given image and apply 
+implicit intents for different actions.
+
 Q1. xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -468,6 +501,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=India")));
     }
 }
+
+Create an Android application to perform the following operations on the table Student 
+(Sid, Student_name, Phone_no):               [14 Marks]    
+i) Update the student name to Ram where Sid = 1 
+ii) Display all student details 
 
 Q2. xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -531,6 +569,9 @@ public class MainActivity extends AppCompatActivity {
 }
 
 SLIP-7
+
+Create an Android application to design the following screen using Frame Layout. 
+
 Q1. xml
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -554,6 +595,9 @@ Q1. xml
         android:layout_marginTop="40dp" android:layout_marginStart="20dp" />
 
 </FrameLayout>
+
+Create an Android application to select a course using Spinner and display the selected 
+course using a Toast message. (Use strings.xml file.)
 
 Q2. xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -602,6 +646,10 @@ public class MainActivity extends AppCompatActivity {
 }
 
 SLIP-8
+
+Create a custom Contact layout to display multiple pieces of information including Photo, 
+Name, Contact Number, and Email ID. 
+
 Q1. activity_main.xml
 <ListView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/list" android:layout_width="match_parent" android:layout_height="match_parent" />
@@ -662,6 +710,9 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
+ Create an Android application to accept a number and use an Options Menu to perform 
+the operations Reverse Number and Cube. Display the result on the screen.
+
 Q2. xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
@@ -719,6 +770,9 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-9
 
+Write an Android application to accept two numbers from the user and display them, but 
+reject the input if both numbers are greater than 10 and ask the user to enter new numbers.
+
 Q1. xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
@@ -768,6 +822,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+
+ Create a simple Android application with a Login Screen. On successful login, open the 
+next Activity and display the message “Welcome Username”. (Without using a database).
 
 Q2. xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -832,6 +889,9 @@ public class Welcome extends AppCompatActivity {
 
 SLIP-10
 
+ Create an Android application to display an Alert Dialog Box with the title "Warning" and 
+message "Battery is low".
+
 Q1. xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
@@ -864,6 +924,9 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 }
+
+Create an Android application to display a list of cities using ListView. Display the selected 
+city using a Toast message when a city is selected. 
 
 Q2. xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -904,6 +967,10 @@ public class MainActivity extends AppCompatActivity {
 }
 
 SLIP-11
+
+ Create an Android application to display your personal information such as Name, Roll 
+Number, Class, and Email ID. Apply different text sizes, text colors, and font families to each 
+text view.
 
 Q1. xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -954,6 +1021,8 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
+Create new contact for designing following layout. 
+
 Q2. xml
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
@@ -988,6 +1057,9 @@ public class MainActivity extends AppCompatActivity {
 }
 
 SLIP-12
+
+ Create an Android application to demonstrate the use of CheckBox to select multiple 
+hobbies and display the selected hobbies.    
 
 Q1. xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -1036,6 +1108,9 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.result)).setText(selected);
     }
 }
+
+ Create an Android application to accept two numbers and perform Addition, Subtraction, 
+Multiplication, and Division using an Options Menu.    
 
 Q2. xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -1098,6 +1173,8 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-13
 
+ Create the following Vertical Scroll View layout.
+
 Q1. xml
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
@@ -1134,6 +1211,10 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
+Create a first activity to accept the following teacher information: First Name, Middle 
+Name, Last Name, Date of Birth, Address, Mobile Number, and Specialization. Display all the 
+information on the second activity when the user clicks the Submit button. 
+
 Q2. xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/box" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="50dp">
@@ -1168,6 +1249,8 @@ public class Second extends AppCompatActivity {
 
 SLIP-14
 
+Create an Android application to design the following screen using Frame Layout.
+
 Q1. xml
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -1191,6 +1274,9 @@ Q1. xml
         android:layout_marginTop="40dp" android:layout_marginStart="20dp" />
 
 </FrameLayout>
+
+Create an application to accept movie details such as Name, Release Year, and Collection 
+and display the information on the next activity. 
 
 Q2. XML
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -1247,6 +1333,9 @@ public class Second extends AppCompatActivity {
 }
 
 SLIP-15
+
+ Create a custom Contact layout to display multiple pieces of information including Photo, 
+Name, Contact Number, and Email ID. 
 
 Q1. activity_main.xml
 <ListView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -1307,6 +1396,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
+
+Create an Android application with a Login Screen. Verify the Username and Password 
+using a SQLite database. On successful login, display the message “Login Successful” in an 
+Alert Dialog Box. 
 
 Q2. xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -1378,6 +1471,8 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-16
 
+ Create the following Vertical Scroll View layout.
+
 Q1. xml
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
@@ -1413,6 +1508,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 }
+
+ Create the simple calculator shown below also perform appropriate operation.
 
 Q2. xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -1497,6 +1594,8 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-17
 
+ Create an Android application to design the following screen using Table Layout.
+
 Q1. activity_main.xml
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -1524,6 +1623,8 @@ Q1. activity_main.xml
     </TableRow>
 
 </TableLayout>
+
+Create the simple calculator shown below also perform appropriate operation. 
 
 Q2. xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -1608,6 +1709,9 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-18
 
+ Create an Android application with two buttons as shown in the given image and apply 
+implicit intents for different actions. 
+
 Q1. activity.xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="50dp">
@@ -1655,6 +1759,9 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.result)).setText(selected);
     }
 }
+
+Display a list of bank names in a Spinner. When an item is selected, display the selected 
+value using a Toast message on the mobile screen. (Use strings.xml file.) 
 
 Q2. strings.xml
 <resources>
@@ -1707,6 +1814,9 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-19
 
+ Write an application to accept two numbers from the user, and display them, but reject 
+input if both numbers are greater than 10 and asks for two new numbers.
+
 Q1. xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
@@ -1757,6 +1867,9 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
+ Create an Android application to demonstrate the use of AutoCompleteTextView for 
+displaying a list of different colors   
+
 Q2. activity.xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
@@ -1793,6 +1906,10 @@ public class MainActivity extends AppCompatActivity {
 }
 
 SLIP-20
+
+ Create an Android application to display an Alert Dialog Box with the title "Warning" and 
+message "Battery is low".         
+
 Q1. xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
@@ -1825,6 +1942,11 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 }
+
+Create table Company (id, name, address, phone_no). Create application for performing the 
+following operation on the table. 
+i) Delete records where company name = TCS 
+ii) Display all company details    
 
 Q2. xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -1888,3 +2010,533 @@ public class MainActivity extends AppCompatActivity {
         c.close();
     }
 }
+
+SLIP-21
+
+Create an Android application to display your personal information such as Name, Roll 
+Number, Class, and Email ID. Apply different text sizes, text colors, and font families to each 
+text view. 
+
+Q1. xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="20dp" android:gravity="center">
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Name: John Doe"
+        android:textSize="30sp"
+        android:textColor="#2196F3"
+        android:fontFamily="sans-serif-medium" />
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Roll No: 101"
+        android:textSize="22sp"
+        android:textColor="#F44336"
+        android:fontFamily="monospace"
+        android:layout_marginTop="10dp" />
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Class: TY-Computer"
+        android:textSize="18sp"
+        android:textColor="#4CAF50"
+        android:fontFamily="serif"
+        android:layout_marginTop="10dp" />
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Email: john@example.com"
+        android:textSize="14sp"
+        android:textColor="#757575"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_marginTop="10dp" />
+
+</LinearLayout>
+
+java
+package com.example.myapplication;
+
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+    }
+}
+
+Create an Android application to perform following numeric operation according to user 
+selection of radio button  
+
+Q2. xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="30dp" android:background="#FEF8E0">
+
+    <EditText android:id="@+id/n" android:layout_width="match_parent" 
+        android:layout_height="wrap_content" android:hint="Enter No : " android:inputType="numberSigned"/>
+
+    <RadioGroup android:id="@+id/rg" android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" android:layout_gravity="center" android:layout_margin="30dp">
+        
+        <RadioButton android:id="@+id/r1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Odd or Even"/>
+        <RadioButton android:id="@+id/r2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Positive or Negative"/>
+        <RadioButton android:id="@+id/r3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Square"/>
+        <RadioButton android:id="@+id/r4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Factorial"/>
+    </RadioGroup>
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" 
+        android:text="Click" android:onClick="calc" android:layout_gravity="center"/>
+
+    <TextView android:id="@+id/ans" android:layout_width="match_parent" 
+        android:layout_height="wrap_content" android:text="Ans : " android:textSize="18sp" android:layout_marginTop="30dp"/>
+
+</LinearLayout>
+
+java
+package com.example.myapplication;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void calc(View v) {
+        // Grab the number and the selected radio button ID
+        int no = Integer.parseInt(((EditText)findViewById(R.id.n)).getText().toString());
+        int id = ((RadioGroup)findViewById(R.id.rg)).getCheckedRadioButtonId();
+        String r = "Ans : ";
+
+        // Perform the math based on which button is checked
+        if (id == R.id.r1) r += (no % 2 == 0) ? "Even" : "Odd";
+        else if (id == R.id.r2) r += (no >= 0) ? "Positive" : "Negative";
+        else if (id == R.id.r3) r += (no * no);
+        else if (id == R.id.r4) {
+            int f = 1;
+            for(int i = 1; i <= no; i++) f *= i;
+            r += f;
+        }
+
+        // Display the result
+        ((TextView)findViewById(R.id.ans)).setText(r);
+    }
+}
+
+SLIP-22
+
+Create an Android application with two buttons as shown in the given image and apply 
+implicit intents for different actions. 
+
+Q1. activity.xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="50dp">
+
+    <LinearLayout android:id="@+id/cbGroup" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reading" />
+        <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Gaming" />
+        <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Coding" />
+    </LinearLayout>
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Show Hobbies" android:onClick="show"/>
+
+    <TextView android:id="@+id/result" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:textSize="18sp" android:layout_marginTop="20dp"/>
+
+</LinearLayout>
+
+MainActivity.java
+package com.example.myapplication;
+
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override protected void onCreate(Bundle b) { super.onCreate(b); setContentView(R.layout.activity_main); }
+
+    // Linked directly to the button in XML
+    public void show(View v) {
+        String selected = "Selected Hobbies:\n";
+        ViewGroup group = findViewById(R.id.cbGroup);
+
+        // Loop through the checkbox group
+        for (int i = 0; i < group.getChildCount(); i++) {
+            CheckBox cb = (CheckBox) group.getChildAt(i);
+            if (cb.isChecked()) selected += "- " + cb.getText() + "\n";
+        }
+
+        // Display the result
+        ((TextView) findViewById(R.id.result)).setText(selected);
+    }
+}
+
+Create an Android application to demonstrate a Context Menu on a button. On long
+press, display options “Factorial” and “Armstrong Number” and perform the selected 
+operation. 
+
+Q2. xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="20dp" android:gravity="center">
+
+    <EditText android:id="@+id/n" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:hint="Enter Number" android:inputType="number" />
+
+    <Button android:id="@+id/btn" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:text="LONG PRESS ME" android:layout_marginTop="20dp"/>
+
+    <TextView android:id="@+id/res" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:textSize="20sp" android:layout_marginTop="30dp" />
+
+</LinearLayout>
+
+java
+import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    EditText n; TextView res;
+
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+        n = findViewById(R.id.n); res = findViewById(R.id.res);
+        
+        // 1. Register the Button to have a Context Menu
+        registerForContextMenu(findViewById(R.id.btn)); 
+    }
+
+    // 2. Create the Menu Options
+    @Override public void onCreateContextMenu(ContextMenu m, View v, ContextMenu.ContextMenuInfo info) {
+        m.add(0, 1, 0, "Factorial"); 
+        m.add(0, 2, 0, "Armstrong Number");
+    }
+
+    // 3. Handle Menu Clicks
+    @Override public boolean onContextItemSelected(MenuItem item) {
+        int num = Integer.parseInt(n.getText().toString());
+
+        if (item.getItemId() == 1) { // Factorial
+            int f = 1; 
+            for(int i = 1; i <= num; i++) f *= i;
+            res.setText("Factorial: " + f);
+            
+        } else if (item.getItemId() == 2) { // Armstrong
+            int sum = 0, temp = num;
+            int digits = String.valueOf(num).length(); // Get number of digits
+            
+            while(temp > 0) {
+                sum += Math.pow(temp % 10, digits);
+                temp /= 10;
+            }
+            res.setText((sum == num) ? "It is an Armstrong Number" : "Not an Armstrong Number");
+        }
+        return true;
+    }
+}
+
+SLIP-23
+
+ Create an Android application to design the following screen using Relative Layout. 
+
+Q1. xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/main"
+    android:background="#000000" android:padding="50dp">
+
+    <TextView android:id="@+id/lbl" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Comments" android:textColor="#FFFFFF" />
+
+    <EditText android:id="@+id/box" android:layout_width="match_parent" android:layout_height="150dp"
+        android:layout_below="@id/lbl" android:layout_marginTop="5dp"
+        android:background="#FFFFFF" android:gravity="top|start" android:padding="5dp"/>
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_below="@id/box" android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" android:text="Cancel" />
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_below="@id/box" android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp" android:text="Save" />
+
+</RelativeLayout>
+
+ Create a first activity to accept the following student information: First Name, Middle 
+Name, Last Name, Date of Birth, Address, and Email ID. Display all the information on the 
+second activity when the user clicks the Submit button.
+
+Q2. xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/box" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="50dp">
+
+    <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="First Name" />
+    <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Middle Name" />
+    <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Last Name" />
+    <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Date of Birth" />
+    <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Address" />
+    <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email ID" />
+
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Submit" android:onClick="send"/>
+
+</LinearLayout>
+
+java1
+package com.example.myapplication;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    @Override protected void onCreate(Bundle b) { super.onCreate(b); setContentView(R.layout.activity_main); }
+
+    public void send(View v) {
+        String data = "Student Info:\n\n";
+        ViewGroup box = findViewById(R.id.box);
+
+        // CRASH-PROOF LOOP: Checks if the item is actually an EditText before reading it
+        for(int i = 0; i < box.getChildCount(); i++) {
+            if (box.getChildAt(i) instanceof EditText) {
+                data += ((EditText) box.getChildAt(i)).getText() + "\n";
+            }
+        }
+
+        startActivity(new Intent(this, Second.class).putExtra("DATA", data));
+    }
+}
+
+java2
+package com.example.myapplication;
+import android.os.Bundle;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class Second extends AppCompatActivity {
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        TextView tv = new TextView(this);
+        tv.setTextSize(20f);
+        tv.setPadding(40, 40, 40, 40);
+        tv.setText(getIntent().getStringExtra("DATA"));
+        setContentView(tv);
+    }
+}
+
+SLIP-24
+
+Create a simple Application which shows life cycle of an activity.
+
+Q1. MainActivity.java
+package com.example.myapplication; // Replace with your actual package name
+
+import android.os.Bundle;
+import android.util.Log;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "LifecycleDemo";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Log.d(TAG, "1. onCreate Called - App Created");
+    }
+
+    @Override protected void onStart() { super.onStart(); Log.d(TAG, "2. onStart Called - App Visible"); }
+    @Override protected void onResume() { super.onResume(); Log.d(TAG, "3. onResume Called - App Interactive"); }
+    @Override protected void onPause() { super.onPause(); Log.d(TAG, "4. onPause Called - App Partially Hidden"); }
+    @Override protected void onStop() { super.onStop(); Log.d(TAG, "5. onStop Called - App Hidden"); }
+    @Override protected void onDestroy() { super.onDestroy(); Log.d(TAG, "6. onDestroy Called - App Destroyed"); }
+    @Override protected void onRestart() { super.onRestart(); Log.d(TAG, "7. onRestart Called - App Restarting"); }
+}
+
+Create an Android application to perform following operation according to user selection 
+of radio button. 
+
+Q2. xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="30dp" android:background="#FEF8E0">
+
+    <EditText android:id="@+id/et" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:hint="Enter String : "/>
+
+    <RadioGroup android:id="@+id/rg" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_gravity="center" android:layout_margin="30dp">
+
+        <RadioButton android:id="@+id/r1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Uppercase"/>
+        <RadioButton android:id="@+id/r2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lowercase"/>
+        <RadioButton android:id="@+id/r3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Right 5 Character"/>
+        <RadioButton android:id="@+id/r4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Left 5 Character"/>
+    </RadioGroup>
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Click" android:onClick="calc" android:layout_gravity="center"/>
+
+    <TextView android:id="@+id/out" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text="Output : " android:textSize="18sp" android:layout_marginTop="30dp"/>
+
+</LinearLayout>
+
+java
+package com.example.myapplication;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void calc(View v) {
+        String s = ((EditText)findViewById(R.id.et)).getText().toString();
+        int id = ((RadioGroup)findViewById(R.id.rg)).getCheckedRadioButtonId();
+        String r = s; // Default result
+
+        if (id == R.id.r1) r = s.toUpperCase();
+        else if (id == R.id.r2) r = s.toLowerCase();
+        else if (id == R.id.r3) r = (s.length() > 5) ? s.substring(s.length() - 5) : s;
+        else if (id == R.id.r4) r = (s.length() > 5) ? s.substring(0, 5) : s;
+
+        ((TextView)findViewById(R.id.out)).setText("Output : " + r);
+    }
+}
+
+SLIP-25
+
+Construct an app that toggles a light bulb on and off when the user clicks on toggle button.
+
+Q1. xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:gravity="center" android:padding="20dp">
+
+    <ImageView android:id="@+id/bulb" android:layout_width="100dp" android:layout_height="100dp"
+        android:background="#444444" android:layout_marginBottom="30dp"/>
+
+    <ToggleButton android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:textOn="Turn Off" android:textOff="Turn On" android:onClick="toggle"/>
+
+</LinearLayout>
+
+java
+package com.example.myapplication;
+
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ToggleButton;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void toggle(View v) {
+        // If checked (ON), set Yellow. Else (OFF), set Gray.
+        findViewById(R.id.bulb).setBackgroundColor(
+                ((ToggleButton) v).isChecked() ? Color.YELLOW : Color.DKGRAY
+        );
+    }
+}
+
+Create an Android application to demonstrate a Context Menu on a button. On long
+press, display options “Palindrome” and “Reverse Number” and perform the selected 
+operation.
+
+Q2. xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="20dp" android:gravity="center">
+
+    <EditText android:id="@+id/input" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:hint="Enter Number/String"/>
+
+    <Button android:id="@+id/btn" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:text="LONG PRESS ME" android:layout_marginTop="20dp"/>
+
+    <TextView android:id="@+id/res" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:textSize="20sp" android:layout_marginTop="30dp"/>
+
+</LinearLayout>
+
+java
+package com.example.myapplication;
+
+import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    EditText in; TextView res;
+
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+        in = findViewById(R.id.input); res = findViewById(R.id.res);
+
+        // Connect the long-press menu to the button
+        registerForContextMenu(findViewById(R.id.btn));
+    }
+
+    @Override public void onCreateContextMenu(ContextMenu m, View v, ContextMenu.ContextMenuInfo info) {
+        m.add(0, 1, 0, "Palindrome");
+        m.add(0, 2, 0, "Reverse Number");
+    }
+
+    @Override public boolean onContextItemSelected(MenuItem item) {
+        String str = in.getText().toString();
+
+        // Ultra-short trick to reverse any string or number instantly
+        String rev = new StringBuilder(str).reverse().toString();
+
+        if (item.getItemId() == 1) {
+            res.setText(str.equals(rev) ? "It is a Palindrome" : "Not a Palindrome");
+        } else if (item.getItemId() == 2) {
+            res.setText("Reversed: " + rev);
+        }
+        return true;
+    }
+}
+
+THE END. NOW GO FUCK YOURSELVES! :p
