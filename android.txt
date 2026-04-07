@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
 SLIP-2
 
-activity_main.xml
+Q1. activity_main.xml
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
@@ -1161,5 +1161,445 @@ public class Second extends AppCompatActivity {
         tv.setPadding(40, 40, 40, 40);
         tv.setText(getIntent().getStringExtra("DATA"));
         setContentView(tv);
+    }
+}
+
+SLIP-14
+
+Q1. xml
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/main"
+    android:background="#000000">
+
+    <ImageView
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:src="@android:drawable/btn_star_big_on"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="This is my lovely dog, Oukii"
+        android:textColor="#FFFFFF" android:padding="10dp" />
+
+    <Button
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Print Picture"
+        android:layout_marginTop="40dp" android:layout_marginStart="20dp" />
+
+</FrameLayout>
+
+Q2. XML
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="20dp" android:gravity="center">
+
+    <EditText android:id="@+id/name" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Movie Name" />
+    <EditText android:id="@+id/year" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Release Year" android:inputType="number" />
+    <EditText android:id="@+id/col" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Collection (in Cr)" android:inputType="numberDecimal" />
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" 
+        android:text="Submit Details" android:onClick="send" android:layout_marginTop="20dp"/>
+
+</LinearLayout>
+
+javafirst
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    @Override protected void onCreate(Bundle b) { super.onCreate(b); setContentView(R.layout.activity_main); }
+
+    public void send(View v) {
+        // Combine all details into one string to save code
+        String details = "Movie: " + ((EditText) findViewById(R.id.name)).getText().toString() +
+                       "\nYear: " + ((EditText) findViewById(R.id.year)).getText().toString() +
+                       "\nCollection: " + ((EditText) findViewById(R.id.col)).getText().toString();
+
+        // Pass it to the next screen
+        startActivity(new Intent(this, Second.class).putExtra("movie_data", details));
+    }
+}
+
+javasecond
+import android.os.Bundle;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class Second extends AppCompatActivity {
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        
+        // Create UI directly in Java to skip making a second XML file
+        TextView tv = new TextView(this);
+        tv.setTextSize(24);
+        tv.setPadding(30, 30, 30, 30);
+        tv.setText(getIntent().getStringExtra("movie_data")); // Receive the data
+        
+        setContentView(tv);
+    }
+}
+
+SLIP-15
+
+Q1. activity_main.xml
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list" android:layout_width="match_parent" android:layout_height="match_parent" />
+
+contact_item.xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="horizontal" android:padding="10dp" android:gravity="center_vertical">
+
+    <ImageView android:id="@+id/img" android:layout_width="60dp" android:layout_height="60dp"
+        android:src="@android:drawable/ic_menu_report_image" />
+
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:orientation="vertical" android:layout_marginStart="15dp">
+        <TextView android:id="@+id/nm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textStyle="bold" android:textSize="18sp" />
+        <TextView android:id="@+id/ph" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:id="@+id/em" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#555"/>
+    </LinearLayout>
+</LinearLayout>
+
+java
+package com.example.myapplication;
+
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.*;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    // Sample Data
+    String[] names = {"John Doe", "Jane Smith"},
+            nums = {"12345", "67890"},
+            emails = {"john@a.com", "jane@b.com"};
+
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+
+        ListView lv = findViewById(R.id.list);
+
+        // The Adapter connects our arrays to the custom XML
+        lv.setAdapter(new BaseAdapter() {
+            @Override public int getCount() { return names.length; }
+            @Override public Object getItem(int i) { return null; }
+            @Override public long getItemId(int i) { return i; }
+
+            @Override public View getView(int i, View v, ViewGroup p) {
+                if (v == null) v = getLayoutInflater().inflate(R.layout.contact_item, null);
+
+                ((TextView) v.findViewById(R.id.nm)).setText(names[i]);
+                ((TextView) v.findViewById(R.id.ph)).setText(nums[i]);
+                ((TextView) v.findViewById(R.id.em)).setText(emails[i]);
+
+                return v;
+            }
+        });
+    }
+}
+
+Q2. xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="20dp" android:gravity="center">
+
+    <EditText android:id="@+id/u" android:layout_width="match_parent" 
+        android:layout_height="wrap_content" android:hint="Username"/>
+        
+    <EditText android:id="@+id/p" android:layout_width="match_parent" 
+        android:layout_height="wrap_content" android:hint="Password" android:inputType="textPassword"/>
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" 
+        android:text="Login" android:onClick="login" android:layout_marginTop="20dp"/>
+
+</LinearLayout>
+
+java
+import android.app.AlertDialog;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    SQLiteDatabase db;
+    EditText u, p;
+
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+        u = findViewById(R.id.u); p = findViewById(R.id.p);
+
+        // 1. Create DB and Table in just two lines
+        db = openOrCreateDatabase("LoginDB", MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS Users(user TEXT, pass TEXT)");
+        
+        // Insert a dummy user so we can actually test the login
+        Cursor c = db.rawQuery("SELECT * FROM Users", null);
+        if (c.getCount() == 0) {
+            db.execSQL("INSERT INTO Users VALUES('admin', '123')");
+        }
+        c.close();
+    }
+
+    public void login(View v) {
+        String userStr = u.getText().toString();
+        String passStr = p.getText().toString();
+
+        // 2. Query the database to check if the username and password match
+        Cursor c = db.rawQuery("SELECT * FROM Users WHERE user=? AND pass=?", new String[]{userStr, passStr});
+
+        if (c.getCount() > 0) {
+            // 3. Show Alert Dialog on Success
+            new AlertDialog.Builder(this)
+                .setTitle("Success")
+                .setMessage("Login Successful")
+                .setPositiveButton("OK", null)
+                .show();
+        } else {
+            Toast.makeText(this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
+        }
+        c.close();
+    }
+}
+
+SLIP-16
+
+Q1. xml
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="20dp">
+
+        <Button android:layout_width="match_parent" android:layout_height="100dp" android:text="Button 1" />
+        <Button android:layout_width="match_parent" android:layout_height="100dp" android:text="Button 2" />
+        <Button android:layout_width="match_parent" android:layout_height="100dp" android:text="Button 3" />
+        <Button android:layout_width="match_parent" android:layout_height="100dp" android:text="Button 4" />
+        <Button android:layout_width="match_parent" android:layout_height="100dp" android:text="Button 5" />
+        <Button android:layout_width="match_parent" android:layout_height="100dp" android:text="Button 6" />
+        <Button android:layout_width="match_parent" android:layout_height="100dp" android:text="Button 7" />
+        <Button android:layout_width="match_parent" android:layout_height="100dp" android:text="Button 8" />
+        <Button android:layout_width="match_parent" android:layout_height="100dp" android:text="Button 9" />
+
+        <Button android:layout_width="match_parent" android:layout_height="100dp"
+            android:text="Button 10" android:backgroundTint="#FF9800" />
+
+    </LinearLayout>
+</ScrollView>
+
+java
+package com.example.myapplication;
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+    }
+}
+
+Q2. xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="10dp">
+
+    <EditText android:id="@+id/disp" android:layout_width="match_parent" 
+        android:layout_height="80dp" android:textSize="30sp" android:gravity="end|bottom"/>
+
+    <TableLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:stretchColumns="*">
+        <TableRow>
+            <Button android:text="1" android:onClick="calc"/> <Button android:text="2" android:onClick="calc"/>
+            <Button android:text="3" android:onClick="calc"/> <Button android:text="+" android:onClick="calc"/>
+        </TableRow>
+        <TableRow>
+            <Button android:text="4" android:onClick="calc"/> <Button android:text="5" android:onClick="calc"/>
+            <Button android:text="6" android:onClick="calc"/> <Button android:text="-" android:onClick="calc"/>
+        </TableRow>
+        <TableRow>
+            <Button android:text="7" android:onClick="calc"/> <Button android:text="8" android:onClick="calc"/>
+            <Button android:text="9" android:onClick="calc"/> <Button android:text="*" android:onClick="calc"/>
+        </TableRow>
+        <TableRow>
+            <Button android:text="." android:onClick="calc"/> <Button android:text="0" android:onClick="calc"/>
+            <Button android:text="C" android:onClick="calc"/> <Button android:text="/" android:onClick="calc"/>
+        </TableRow>
+    </TableLayout>
+
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content" 
+        android:text="=" android:onClick="calc"/>
+
+</LinearLayout>
+
+java
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    EditText disp;
+    double num1 = 0;
+    String op = "";
+
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+        disp = findViewById(R.id.disp);
+    }
+
+    public void calc(View v) {
+        // Get the text of the button that was clicked
+        String b = ((Button) v).getText().toString();
+        String currentText = disp.getText().toString();
+
+        if (b.matches("[0-9.]")) { 
+            // If it's a number or decimal, append it
+            disp.append(b);
+            
+        } else if (b.equals("C")) { 
+            // Clear screen
+            disp.setText("");
+            
+        } else if (b.equals("=")) { 
+            // Calculate Result
+            double num2 = Double.parseDouble(currentText);
+            double res = op.equals("+") ? num1 + num2 : 
+                         op.equals("-") ? num1 - num2 : 
+                         op.equals("*") ? num1 * num2 : num1 / num2;
+                         
+            disp.setText(String.valueOf(res));
+            
+        } else { 
+            // It's an operator (+, -, *, /)
+            num1 = Double.parseDouble(currentText);
+            op = b;
+            disp.setText(""); // Clear for the next number
+        }
+    }
+}
+
+SLIP-17
+
+Q1. activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:padding="50dp"
+    android:stretchColumns="1"> <TableRow android:layout_marginTop="16dp">
+    <TextView android:text="User Name:" android:textColor="#FFFFFF" android:paddingEnd="10dp"/>
+    <EditText android:background="#FFFFFF" android:minHeight="40dp"/>
+</TableRow>
+
+    <TableRow android:layout_marginTop="16dp">
+        <TextView android:text="Password:" android:textColor="#FFFFFF" android:paddingEnd="10dp"/>
+        <EditText android:background="#FFFFFF" android:inputType="textPassword" android:minHeight="40dp"/>
+    </TableRow>
+
+    <TableRow android:layout_marginTop="8dp">
+        <View /> <CheckBox android:text="Remember Password" android:textColor="#FFFFFF"/>
+    </TableRow>
+
+    <TableRow android:layout_marginTop="16dp">
+        <Button android:text="Log In" android:layout_width="wrap_content"/>
+    </TableRow>
+
+</TableLayout>
+
+Q2. xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="10dp">
+
+    <EditText android:id="@+id/disp" android:layout_width="match_parent" 
+        android:layout_height="80dp" android:textSize="30sp" android:gravity="end|bottom"/>
+
+    <TableLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:stretchColumns="*">
+        <TableRow>
+            <Button android:text="1" android:onClick="calc"/> <Button android:text="2" android:onClick="calc"/>
+            <Button android:text="3" android:onClick="calc"/> <Button android:text="+" android:onClick="calc"/>
+        </TableRow>
+        <TableRow>
+            <Button android:text="4" android:onClick="calc"/> <Button android:text="5" android:onClick="calc"/>
+            <Button android:text="6" android:onClick="calc"/> <Button android:text="-" android:onClick="calc"/>
+        </TableRow>
+        <TableRow>
+            <Button android:text="7" android:onClick="calc"/> <Button android:text="8" android:onClick="calc"/>
+            <Button android:text="9" android:onClick="calc"/> <Button android:text="*" android:onClick="calc"/>
+        </TableRow>
+        <TableRow>
+            <Button android:text="." android:onClick="calc"/> <Button android:text="0" android:onClick="calc"/>
+            <Button android:text="C" android:onClick="calc"/> <Button android:text="/" android:onClick="calc"/>
+        </TableRow>
+    </TableLayout>
+
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content" 
+        android:text="=" android:onClick="calc"/>
+
+</LinearLayout>
+
+java
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    EditText disp;
+    double num1 = 0;
+    String op = "";
+
+    @Override protected void onCreate(Bundle b) {
+        super.onCreate(b);
+        setContentView(R.layout.activity_main);
+        disp = findViewById(R.id.disp);
+    }
+
+    public void calc(View v) {
+        // Get the text of the button that was clicked
+        String b = ((Button) v).getText().toString();
+        String currentText = disp.getText().toString();
+
+        if (b.matches("[0-9.]")) { 
+            // If it's a number or decimal, append it
+            disp.append(b);
+            
+        } else if (b.equals("C")) { 
+            // Clear screen
+            disp.setText("");
+            
+        } else if (b.equals("=")) { 
+            // Calculate Result
+            double num2 = Double.parseDouble(currentText);
+            double res = op.equals("+") ? num1 + num2 : 
+                         op.equals("-") ? num1 - num2 : 
+                         op.equals("*") ? num1 * num2 : num1 / num2;
+                         
+            disp.setText(String.valueOf(res));
+            
+        } else { 
+            // It's an operator (+, -, *, /)
+            num1 = Double.parseDouble(currentText);
+            op = b;
+            disp.setText(""); // Clear for the next number
+        }
     }
 }
